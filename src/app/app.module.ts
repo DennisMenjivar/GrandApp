@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactosPage } from '../../src/pages/contactos/contactos';
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ContactosPage } from '../../src/pages/contactos/contactos';
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

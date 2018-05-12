@@ -22,7 +22,7 @@ export class ContactosPage {
     , public modalCtrl: ModalController
     , public actionSheetCtrl: ActionSheetController
     , public toastCtrl: ToastController
-    , private callNumber: CallNumber
+    , public callNumber: CallNumber
   ) {
   }
 
@@ -39,9 +39,9 @@ export class ContactosPage {
   }
 
   call(contacto: Contacto) {
-    this.callNumber.callNumber('9992-7135', true)
-      .then(res => console.log('Launched dialer!', res))
-      .catch(err => console.log('Error launching dialer', err));
+    this.callNumber.callNumber(contacto.numero, true)
+      .then(() => console.log('Launched dialer!'))
+      .catch(() => console.log('Error launching dialer'));
   }
 
   loadContactos() {
