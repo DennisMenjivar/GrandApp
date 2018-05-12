@@ -42,7 +42,7 @@ export class ContactosPage {
     try {
       await this.call.callNumber(c.numero, true);
     } catch (e) {
-      console.log(e);
+      this.showToast("Llamando a: " + c.nombre);
     }
   }
 
@@ -69,6 +69,16 @@ export class ContactosPage {
   doRefresh(refresher) {
     this.loadContactos();
     refresher.complete();
+  }
+
+  showToast(msg: string) {
+    this.loader.dismiss();
+
+    const toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 
 }
