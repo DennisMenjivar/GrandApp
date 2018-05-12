@@ -38,9 +38,9 @@ export class ContactosPage {
     this.loader.dismiss();
   }
 
-  async callNumber(): Promise<any> {
+  async callNumber(c: Contacto): Promise<any> {
     try {
-      await this.call.callNumber('99927135', true);
+      await this.call.callNumber(c.numero, true);
     } catch (e) {
       console.log(e);
     }
