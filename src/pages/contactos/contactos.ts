@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ModalController, ActionSheetController, ToastController } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Generated class for the ContactosPage page.
@@ -20,8 +21,12 @@ export class ContactosPage {
     , public loadingCtrl: LoadingController
     , public modalCtrl: ModalController
     , public actionSheetCtrl: ActionSheetController
-    , public toastCtrl: ToastController) {
+    , public toastCtrl: ToastController
+    , private callNumber: CallNumber
+  ) {
   }
+
+
 
   contactos: Contacto[];
 
@@ -31,6 +36,12 @@ export class ContactosPage {
 
 
     this.loader.dismiss();
+  }
+
+  call(contacto: Contacto) {
+    this.callNumber.callNumber('9992-7135', true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
   }
 
   loadContactos() {
