@@ -22,7 +22,7 @@ export class ContactosPage {
     , public modalCtrl: ModalController
     , public actionSheetCtrl: ActionSheetController
     , public toastCtrl: ToastController
-    , public callNumber: CallNumber
+    , public call: CallNumber
   ) {
   }
 
@@ -38,10 +38,12 @@ export class ContactosPage {
     this.loader.dismiss();
   }
 
-  call(contacto: Contacto) {
-    this.callNumber.callNumber(contacto.numero, true)
-      .then(() => console.log('Launched dialer!'))
-      .catch(() => console.log('Error launching dialer'));
+  async callNumber(): Promise<any> {
+    try {
+      await this.call.callNumber('99927135', true);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   loadContactos() {
