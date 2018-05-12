@@ -7,9 +7,10 @@
 <ion-content padding style="padding: 0%; margin: 0%; border: 0%; background-color: turquoise; width: 100%; height: 100%;">
   <div class="container" style="margin: 0%; border: 0%; padding: 0%; width: 100%; height: 100%;">
     <div class="row" style="padding: 0%; border: 0%; margin: 0%; width: 100%; height: 100%;">
-      <div class="col-6" *ngFor="let op of options" style="margin: 0%; padding: 0.99%; border: 0%">
-        <button *ngIf="op == 'Contactos'" (click)="verContactos()" style="font-weight: bold; margin: 0%; border: 0%; padding: 0%; width: 100%; height: 100%; border-radius: 0%; background-color: slateblue" large ion-button >{{op}}</button>
-        <button style="font-weight: bold; margin: 0%; border: 0%; padding: 0%; width: 100%; height: 100%; border-radius: 0%; background-color: slateblue" large ion-button >{{op}}</button>
+      <div class="col-6" *ngFor="let op of buttons" style="margin: 0%; padding: 0.99%; border: 0%">
+        <!-- <button *ngIf="op == 'Contactos'" (click)="accion($event)" style="font-weight: bold; margin: 0%; border: 0%; padding: 0%; width: 100%; height: 100%; border-radius: 0%; background-color: slateblue" large ion-button >{{op}}</button> -->
+        <button (click)="accion(op)" style="font-weight: bold; margin: 0%; border: 0%; padding: 0%; width: 100%; height: 100%; border-radius: 0%; background-color: slateblue"
+          large ion-button>{{op.title}}</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 // import { Component } from '@angular/core';
 // import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { NavController, NavParams, Toast, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, Toast, LoadingController, Button } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { ContactosPage } from '../contactos/contactos';
 @Component({
@@ -12,14 +12,36 @@ export class HomePage {
 
   private contactos
 
-  options: string[] = ['Contactos', 'Recordatorios', 'Ejercicios', 'Noticias', 'Musica', 'Alertas', 'Ajuster', 'Comunidad', 'Beneficios', 'Juegos']
+  options: string[] = ['Contactos', 'Recordatorios', 'Ejercicios', 'Noticias', 'Musica', 'Alertas', 'Ajuster', 'Comunidad', 'Beneficios', 'Juegos'];
+  buttons: ButtonsActions[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     // public _auxiliarService: AuxiliarService,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController) {
+    this.loadButtonActions();
     this.contactos = ContactosPage;
+  }
+
+  accion(op: ButtonsActions) {
+    console.log("Evento:", op.title);
+    if (op.title == 'Contactos') {
+      this.verContactos();
+    }
+  }
+
+  loadButtonActions() {
+    this.buttons = [];
+    let cont: number = 0;
+    this.options.forEach(element => {
+      let ba: ButtonsActions = new ButtonsActions();
+      ba.id = cont;
+      ba.title = element;
+      ba.color = "black";
+      this.buttons.push(ba)
+      cont++;
+    });
   }
 
   verContactos() {
@@ -52,4 +74,9 @@ export class HomePage {
     this.loader.present();
   }
 
+}
+export class ButtonsActions {
+  id: number;
+  title: string;
+  color: any;
 }
