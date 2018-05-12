@@ -14,5 +14,15 @@
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+  <ion-list>
+    <ion-item *ngFor="let c of contactos" > <!-- (click)="verProductosCliente(c.ID)" -->
+      <h2>{{c.nombre}}</h2>
+      <p>Tel Fijo : {{c.numero}}</p>
+      <p>Dirección: {{c.direccion}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
